@@ -13,7 +13,7 @@ public class BleDevice {
     {
 //реализовать конструктор
         this.nameDevice=nameDevice;
-        //this.uuidDevice=uuidDevice;
+       // this.uuidDevice=uuidDevice;
         this.rssiDevice=rssiDevice;
     }
     public BleDevice (){

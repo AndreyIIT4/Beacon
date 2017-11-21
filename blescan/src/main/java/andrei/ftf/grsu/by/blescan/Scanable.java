@@ -5,5 +5,5 @@ package andrei.ftf.grsu.by.blescan;
  */
 
 public interface Scanable {
-     void search(String s);
+     void search(BleDevice s);
 }
