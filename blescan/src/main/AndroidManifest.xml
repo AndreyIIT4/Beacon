@@ -6,7 +6,7 @@
     <uses-feature android:name="android.hardware.bluetooth_le"  android:required="true" />
     <application>
         <service
-            android:name="andrei.ftf.grsu.by.blescan.BLEService"
+            android:name="andrei.ftf.grsu.by.blescan.BleService"
             android:enabled="true"
             android:exported="true" />
     </application>

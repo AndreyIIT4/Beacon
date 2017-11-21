@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
-import andrei.ftf.grsu.by.blescan.BLEService;
+import andrei.ftf.grsu.by.blescan.BleService;
 import andrei.ftf.grsu.by.blescan.BleDevice;
 import andrei.ftf.grsu.by.blescan.Scanable;
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements Scanable{
     protected void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
           accessLocationPermission();
-          Intent intent=new Intent(this, BLEService.class);
+          Intent intent=new Intent(this, BleService.class);
           bindService(intent,connection, Context.BIND_AUTO_CREATE);
           setContentView(R.layout.activity_main);
           listView=(ListView)findViewById (R.id.listView);
@@ -51,10 +51,10 @@ public class MainActivity extends AppCompatActivity implements Scanable{
         }
     }
 
-    private ServiceConnection connection =new ServiceConnection() {
+   private ServiceConnection connection =new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-            BLEService.BeaconBinder binder=(BLEService.BeaconBinder ) iBinder;
+            BleService.BeaconBinder binder=(BleService.BeaconBinder ) iBinder;
             binder.setCallback(MainActivity.this);
         }
         @Override
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements Scanable{
         }
     };
 
-    @Override
+ @Override
     protected void onDestroy() {
         unbindService(connection);
         super.onDestroy();

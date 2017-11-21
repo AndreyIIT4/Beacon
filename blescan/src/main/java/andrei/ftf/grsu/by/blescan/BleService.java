@@ -16,14 +16,15 @@ import android.util.Log;
 import java.util.ArrayList;
 
 
-public class BLEService extends Service {
+public class BleService extends Service {
     BluetoothAdapter bluetoothAdapter;
     Scanable bleCallback;
     BluetoothLeScanner btScanner;
     private IBinder connect = new BeaconBinder();
     BleDevice bleDevice;
+    private BluetoothServiceCallbacks bluetoothServiceCallbacks;
    ArrayList<BleDevice> beacon = new ArrayList();
-    public BLEService() {
+    public BleService() {
     }
 
     @Override
@@ -74,6 +75,9 @@ public class BLEService extends Service {
                         .build();
                 Log.d("Main", "Start Scan Beacon ");
                 btScanner.startScan(null, settings, leScanCallback);
+            }
+            if (bluetoothServiceCallbacks != null){
+                bluetoothServiceCallbacks.beaconCallbacks(beacon);
             }
         }
         else{
