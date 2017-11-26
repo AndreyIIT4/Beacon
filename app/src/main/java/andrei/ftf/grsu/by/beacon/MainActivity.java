@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements Scanable{
           listView=(ListView) findViewById (R.id.lvMain);
           bleDevices.add(new BleDevice("ID3",-32));
           adapter=new BeaconAdapter(this,bleDevices);
-          adapter.notifyDataSetChanged();
           listView.setAdapter(adapter);
+          adapter.notifyDataSetChanged();
     }
 
     @TargetApi(23)
