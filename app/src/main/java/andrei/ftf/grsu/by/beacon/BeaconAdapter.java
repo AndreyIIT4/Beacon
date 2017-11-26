@@ -54,6 +54,7 @@ public class BeaconAdapter extends BaseAdapter {
         }
         BleDevice bleDevice = getBleDevice(position);
         // заполняем View в пункте списка данными из товаров: наименование, цена
+        //Эта строчка норм работает, но почему?
         ((TextView) view.findViewById(R.id.tvDescr)).setText(bleDevice.getNameDevice()+"  "+ bleDevice.getRssiDevice());
        //Здесь не работает вывод RSSI в отдельном TextView
         ((TextView) view.findViewById(R.id.tvPrice)).setText(bleDevice.getRssiDevice());
