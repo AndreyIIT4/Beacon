@@ -1,9 +1,5 @@
 package andrei.ftf.grsu.by.blescan;
 
-/**
- * Created by Lenovo on 15.11.2017.
- */
-
 public class BleDevice {
     private String nameDevice;
     private String uuidDevice;
@@ -11,13 +7,12 @@ public class BleDevice {
 
     public BleDevice (String nameDevice,int rssiDevice)//String uuidDevice,
     {
-//реализовать конструктор
+        super();
         this.nameDevice=nameDevice;
-       // this.uuidDevice=uuidDevice;
         this.rssiDevice=rssiDevice;
     }
     public BleDevice (){
-
+        super();
     }
 
     public void setNameDevice(String nameDevice) {

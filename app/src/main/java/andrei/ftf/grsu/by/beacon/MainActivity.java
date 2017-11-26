@@ -9,18 +9,22 @@ import android.content.pm.PackageManager;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import andrei.ftf.grsu.by.blescan.BleService;
 import andrei.ftf.grsu.by.blescan.BleDevice;
 import andrei.ftf.grsu.by.blescan.Scanable;
 
 public class MainActivity extends AppCompatActivity implements Scanable{
-
-    List<String> bleDevices = new ArrayList<>();
+    ArrayList<BleDevice> bleDevices = new ArrayList<BleDevice>();
     ListView listView;
+    BeaconAdapter adapter;
 
       @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +32,11 @@ public class MainActivity extends AppCompatActivity implements Scanable{
           accessLocationPermission();
           Intent intent=new Intent(this, BleService.class);
           bindService(intent,connection, Context.BIND_AUTO_CREATE);
-          setContentView(R.layout.activity_main);
-          listView=(ListView)findViewById (R.id.listView);
-          ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,bleDevices);
+          setContentView(R.layout.main);
+          listView=(ListView) findViewById (R.id.lvMain);
+          bleDevices.add(new BleDevice("ID3",-32));
+          adapter=new BeaconAdapter(this,bleDevices);
+          adapter.notifyDataSetChanged();
           listView.setAdapter(adapter);
     }
 
@@ -59,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements Scanable{
         }
         @Override
         public void onServiceDisconnected(ComponentName componentName) {
-
         }
     };
 
@@ -71,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements Scanable{
 
     @Override
     public void search(BleDevice s) {
-        bleDevices.add(s.getNameDevice());
+        bleDevices.add(s);
     }
+
 }

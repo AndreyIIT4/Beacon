@@ -8,6 +8,5 @@ import java.util.ArrayList;
 
 public interface BluetoothServiceCallbacks {
         void beaconCallbacks(BleDevice beacon);
-
-    void beaconCallbacks(ArrayList<BleDevice> beacon);
+    //void beaconCallbacks(ArrayList<BleDevice> beacon);
 }

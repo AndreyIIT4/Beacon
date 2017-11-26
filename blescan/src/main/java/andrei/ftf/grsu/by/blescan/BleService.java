@@ -15,7 +15,6 @@ import android.os.IBinder;
 import android.util.Log;
 import java.util.ArrayList;
 
-
 public class BleService extends Service {
     BluetoothAdapter bluetoothAdapter;
     Scanable bleCallback;
@@ -23,7 +22,7 @@ public class BleService extends Service {
     private IBinder connect = new BeaconBinder();
     BleDevice bleDevice;
     private BluetoothServiceCallbacks bluetoothServiceCallbacks;
-   ArrayList<BleDevice> beacon = new ArrayList();
+    ArrayList<BleDevice> beacon = new ArrayList();
     public BleService() {
     }
 
@@ -47,7 +46,6 @@ public class BleService extends Service {
 
     @SuppressLint("NewApi")
     private ScanCallback leScanCallback = new ScanCallback() {
-
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
             BluetoothDevice device = result.getDevice();
@@ -59,7 +57,6 @@ public class BleService extends Service {
                 beacon.add(bleDevice);
                 if (bleCallback != null) {
                    bleCallback.search(bleDevice);
-
                 }
             }
         }
@@ -77,11 +74,11 @@ public class BleService extends Service {
                 btScanner.startScan(null, settings, leScanCallback);
             }
             if (bluetoothServiceCallbacks != null){
-                bluetoothServiceCallbacks.beaconCallbacks(beacon);
+                bluetoothServiceCallbacks.beaconCallbacks(bleDevice);
             }
-        }
-        else{
-            startScanning();
+            else {
+                Log.d("Main", "User Looser ");
+            }
         }
     }
 

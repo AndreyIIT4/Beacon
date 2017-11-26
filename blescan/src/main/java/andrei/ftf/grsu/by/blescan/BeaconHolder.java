@@ -8,12 +8,10 @@ import android.widget.TextView;
 
 public class BeaconHolder {
     private TextView nameBeacon;
-    //private TextView uuidBeacon;
     private TextView rssiBeacon;
 
-    public  BeaconHolder(TextView textNameBeacon, TextView textRssiBeacon) { //TextView textUuidBeacon,
+    public  BeaconHolder(TextView textNameBeacon, TextView textRssiBeacon) {
         this.nameBeacon = textNameBeacon;
-        //this.uuidBeacon = textUuidBeacon;
         this.rssiBeacon = textRssiBeacon;
     }
 }
