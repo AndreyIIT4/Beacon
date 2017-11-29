@@ -4,13 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import andrei.ftf.grsu.by.blescan.BleDevice;
 
@@ -29,10 +25,12 @@ public class BeaconAdapter extends BaseAdapter {
         beaconList = products;
         lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
+
     @Override
     public Object getItem(int position) {
         return beaconList.get(position);
     }
+
     @Override
     public int getCount() {
         return beaconList.size();
@@ -53,18 +51,9 @@ public class BeaconAdapter extends BaseAdapter {
             view = lInflater.inflate(R.layout.item, parent, false);
         }
         BleDevice bleDevice = getBleDevice(position);
-        // заполняем View в пункте списка данными из товаров: наименование, цена
-        //Эта строчка норм работает, но почему?
-        ((TextView) view.findViewById(R.id.tvDescr)).setText(bleDevice.getNameDevice()+"  "+ bleDevice.getRssiDevice());
-
-
-
-        //Здесь не работает вывод RSSI в отдельном TextView
-        // ((TextView) view.findViewById(R.id.tvPrice)).setText(bleDevice.getRssiDevice());
-
-
-
-
+        ((TextView) view.findViewById(R.id.tvDescr)).setText(bleDevice.getNameDevice());
+        String rssi=String.valueOf(bleDevice.getRssiDevice());
+        ((TextView) view.findViewById(R.id.tvPrice)).setText(rssi);
         //((ImageView) view.findViewById(R.id.ivImage)).setImageResource(p.image);
         return view;
     }
